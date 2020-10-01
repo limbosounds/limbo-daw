@@ -1,7 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import { BrowserRouter } from "react-router-dom"
+
+import Provider from "Provider"
 
 ReactDOM.render(
-	<h1>Hello, World!</h1>,
+	<BrowserRouter>
+		<Provider />
+	</BrowserRouter>,
 	document.getElementById("__root")
 )

@@ -1,0 +1,31 @@
+@import "styles/vars"
+
+html, body
+	width: 100%
+	height: 100%
+	position: relative
+
+body
+	margin: 0
+	padding: 0
+	font-size: 14px
+	font-family: sans-serif
+	user-select: none
+	*
+		margin: 0
+		padding: 0
+		border-radius: 0
+		appearance: none
+		outline: none
+		border: none
+		background: none
+		font-size: inherit
+		font-family: inherit
+		color: inherit
+		box-sizing: border-box
+
+		&:invalid
+			box-shadow: none
+
+		&:before, &:after
+			box-sizing: border-box

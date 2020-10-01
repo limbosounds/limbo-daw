@@ -47,11 +47,13 @@ const sassLoader: webpack.Loader = {
 const postCssLoader: webpack.Loader = {
 	loader: "postcss-loader",
 	options: {
-		plugins: () => [
-			require("autoprefixer")({
-				overrideBrowsersList: ["> 1%", "last 2 versions"]
-			})
-		]
+		postcssOptions: {
+			plugins: [
+				["autoprefixer", {
+					overrideBrowsersList: ["> 1%", "last 2 versions"]
+				}],
+			]
+		}
 	}
 }
 
