@@ -57,6 +57,13 @@ const postCssLoader: webpack.Loader = {
 	}
 }
 
+const cssLoader: webpack.Loader = {
+	loader: "css-loader",
+	options: {
+		url: false
+	}
+}
+
 const defaultRules: webpack.RuleSetRule[] = [
 	{
 		test: /\.(t|j)sx?$/,
@@ -116,7 +123,7 @@ const devConfig: webpack.Configuration = {
 				test: /\.(sa|c)ss$/,
 				use: [
 					"style-loader",
-					"css-loader",
+					cssLoader,
 					postCssLoader,
 					sassLoader
 				]
@@ -140,7 +147,7 @@ const prodConfig: webpack.Configuration = {
 				test: /\.(sa|c)ss$/,
 				use: [
 					MiniCssExtractPlugin.loader,
-					"css-loader",
+					cssLoader,
 					postCssLoader,
 					sassLoader
 				]
