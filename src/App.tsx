@@ -4,8 +4,10 @@ import { RouteComponentProps } from "react-router-dom"
 
 import "styles/fonts"
 import "styles/main"
+import "styles/uni"
 
 import Icon from "components/Icon"
+import Tooltip from "components/UI/Tooltip"
 
 export interface AppProps
 extends RouteComponentProps<any> {
@@ -31,7 +33,51 @@ extends React.Component<AppProps, AppState> {
 					<p style={{ fontWeight, fontStyle: "italic" }}>Lorem ipsum dolor sit amet.</p>
 				</div>
 			})}
-			<Icon name="heart" />
+
+			<Tooltip
+				content={<>
+					<strong>Click me</strong> to start googling! <Icon name="happy-outline" />
+				</>}
+				element="a"
+				elementProps={{
+					href: "https://google.com",
+					target: "_BLANK",
+					rel: "noopener",
+					style: {
+						color: "cornflowerblue"
+					}
+				} as React.AnchorHTMLAttributes<HTMLAnchorElement>}
+			>
+				Example with custom element
+			</Tooltip>
+
+			<Tooltip 
+				content="Move cursor to the right edge of the screen"
+				elementProps={{
+					className: "u-paper l-1",
+					style: {
+						padding: 20
+					}
+				}}
+			>
+				Example with tooltip near the screen edge
+			</Tooltip>
+
+			<div style={{ margin: "0 auto", width: 600}}>
+				{[...Array(5)].map((_, i) => {
+					return <div
+						key={i}
+						className={`u-paper l-${i + 1}`}
+						style={{
+							height: 200,
+							marginBottom: 40
+						}}
+					/>
+				})}
+			</div>
+			<div style={{ height: 1200 }}>
+
+			</div>
 		</>
 	}
 }

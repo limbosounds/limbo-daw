@@ -1,0 +1,35 @@
+@import "styles/vars"
+
+@keyframes fadeIn
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+
+@keyframes fadeOut
+	0%
+		opacity: 1
+	100%
+		opacity: 0
+
+.u-fade-in, .u-fade-out
+	animation-duration: 240ms
+	animation-timing-function: $transition
+	animation-fill-mode: backwards
+.u-fade-in
+	animation-name: fadeIn
+.u-fade-out
+	animation-name: fadeOut
+
+.u-paper
+	background: rgba($colorLight, .03)
+	&.l-1
+		box-shadow: 0 1px 3px rgba(black, .24)
+	&.l-2
+		box-shadow: 0 1px 3px rgba(black, .12), 0 3px 6px rgba(black, .24)
+	&.l-3
+		box-shadow: 0 1px 3px rgba(black, .12), 0 6px 12px rgba(black, .24)
+	&.l-4
+		box-shadow: 0 1px 3px rgba(black, .12), 0 12px 24px rgba(black, .24)
+	&.l-5
+		box-shadow: 0 1px 3px rgba(black, .12), 0 18px 36px rgba(black, .24)

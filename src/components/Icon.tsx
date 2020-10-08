@@ -15,11 +15,11 @@ export default
 class Icon
 extends React.Component<IconProps, IconState> {
 	render() {
-		return <div className="c-icon">
+		return <span className="c-icon">
 			<ion-icon 
 				name={this.props.name}
 				size={this.props.size}
 			/>
-		</div>
+		</span>
 	}
 }

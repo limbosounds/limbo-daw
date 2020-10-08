@@ -1,0 +1,21 @@
+@import "styles/vars"
+
+div.c-tooltip-display
+	+pos(absolute, 0, 0, 0, 0)
+	z-index: 1200
+	pointer-events: none
+	overflow: hidden
+
+	div.td-inner-wrapper
+		// Right and bottom are set to -100% to make actual component size to 2x of screen size
+		// This prevents tooltip float element from being squeezed by the edges of screen
+		+pos(absolute, 0, 0, -100%, -100%)
+
+	div.tooltip
+		+pos(fixed, 0, 0)
+		z-index: 1201
+		max-width: 360px
+		padding: 5px 10px
+		background: rgba(black, .72)
+		color: white
+		font-size: 12px
