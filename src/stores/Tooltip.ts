@@ -1,7 +1,10 @@
 import React from "react" // for types usage
-import { observable, action } from "mobx"
+import { observable, action, makeObservable } from "mobx"
 
 class TooltipStore {
+	constructor() {
+		makeObservable(this)
+	}
 	// Setting the default coordinates to make em always defined
 	@observable position
 		: Coordinates2D
