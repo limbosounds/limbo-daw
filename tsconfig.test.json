@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "es5",
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "strict": false,
+        "sourceMap": true,
+        "jsx": "react",
+        "traceResolution": false,
+        "experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"strictNullChecks": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+
+        "allowJs": false,
+        "declaration": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "types": [ "node" ],
+        "lib": ["es6", "dom", "dom.iterable"],
+        "downlevelIteration": true,
+        "resolveJsonModule": true,
+        "typeRoots": [
+            "./node_modules/@types"
+        ]
+    }
+}

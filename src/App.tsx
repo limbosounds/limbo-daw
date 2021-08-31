@@ -8,6 +8,7 @@ import "styles/uni"
 
 import Icon from "components/Icon"
 import Tooltip from "components/UI/Tooltip"
+import Keyboard from "stores/Keyboard"
 
 export interface AppProps
 extends RouteComponentProps<any> {
@@ -22,6 +23,25 @@ export interface AppState {
 export default
 class App
 extends React.Component<AppProps, AppState> {
+	componentDidMount() {
+		document.addEventListener("keydown", this.handleKeyDown)
+		document.addEventListener("keyup", this.handleKeyUp)
+	}
+
+	handleKeyDown = (
+		event: KeyboardEvent
+	) => {
+		if (event.repeat)
+			return
+
+		Keyboard.playKey(event.key)
+	}
+
+	handleKeyUp = (
+		event: KeyboardEvent
+	) => {
+		Keyboard.unplayKey(event.key)
+	}
 
 	render() {
 		return <>
