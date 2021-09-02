@@ -1,0 +1,23 @@
+@import "styles/vars"
+
+div.c-window
+	position: absolute
+	z-index: 1000
+	background: red
+	box-shadow: 0 6px 18px rgba(black, .24)
+	&.focused
+		z-index: 1200
+
+	> header
+		display: flex
+		align-items: center
+		justify-content: space-between
+		position: absolute
+		top: 0
+		h3
+			font-size: 18px
+
+	> div.window-content
+		background: white
+		width: 100%
+		height: 100%

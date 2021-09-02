@@ -34,12 +34,10 @@ class Keyboard {
 		if (!note)
 			return
 
-		if (typeof this.playedKeys[key] == "undefined") {
-			this.playedKeys[key] = new Oscillator(
-				this.context,
-				{ defaultFrequency: getNoteFrequency(note) }
-			)
-		}
+		this.playedKeys[key] = new Oscillator(
+			this.context,
+			{ defaultFrequency: getNoteFrequency(note) }
+		)
 
 		this.playedKeys[key].play()
 	}
@@ -47,11 +45,11 @@ class Keyboard {
 	unplayKey = (
 		key: string
 	) => {
-		if (typeof this.playedKeys[key] == "undefined")
+		const lcKey = key.toLowerCase()
+		if (typeof this.playedKeys[lcKey] == "undefined")
 			return
 
-		this.playedKeys[key].stop()
-		delete this.playedKeys[key]
+		this.playedKeys[lcKey].stop()
 	}
 }
 
