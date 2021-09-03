@@ -37,6 +37,18 @@ extends React.Component<AppProps, AppState> {
 				title: "Test window",
 			}
 		)
+
+		WindowsManager.create(
+			<>
+				<h1 style={{ color: "black" }}>
+					Hello, world!
+				</h1>
+			</>,
+			{
+				size: { width: 400, height: 300 },
+				title: "Test window",
+			}
+		)
 	}
 
 	render() {

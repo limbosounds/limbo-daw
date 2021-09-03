@@ -16,3 +16,12 @@ $colorAccent: #02d4a0
 	left: $left
 	right: $right
 	bottom: $bottom
+
+=transition($transitionProperties...)
+	@if length($transitionProperties) == 0
+		transition-property: all
+	@else
+		transition-property: $transitionProperties
+
+	transition-duration: 240ms
+	transition-timing-function: $transition

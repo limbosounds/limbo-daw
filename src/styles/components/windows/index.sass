@@ -5,8 +5,12 @@ div.c-window
 	z-index: 1000
 	background: red
 	box-shadow: 0 6px 18px rgba(black, .24)
+	+transition(filter)
+
 	&.focused
 		z-index: 1200
+	&:not(.focused)
+		filter: contrast(50%)
 
 	> header
 		display: flex

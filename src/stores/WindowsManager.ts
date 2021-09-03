@@ -43,6 +43,7 @@ class WindowsManager {
 	@observable
 	focusedWindow?
 		: string
+		= ""
 
 	getWindowById = (
 		id: string
@@ -97,6 +98,19 @@ class WindowsManager {
 		id: string
 	) => {
 		this.focusedWindow = id
+	}
+
+	@action
+	updatePosition = (
+		id: string,
+		position: Coords2D
+	) => {
+		const window = this.getWindowById(id)
+		if (!window)
+			return
+
+		window.props.position.x = position.x
+		window.props.position.y = position.y
 	}
 }
 
