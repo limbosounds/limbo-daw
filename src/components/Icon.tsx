@@ -4,7 +4,7 @@ import React from "react"
 
 export interface IconProps {
 	name: string,
-	size?: string
+	size?: "small" | "large"
 }
 
 export interface IconState {
@@ -18,7 +18,7 @@ extends React.Component<IconProps, IconState> {
 		return <span className="c-icon">
 			<ion-icon 
 				name={this.props.name}
-				size={this.props.size}
+				size={this.props.size || "small"}
 			/>
 		</span>
 	}

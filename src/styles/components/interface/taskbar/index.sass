@@ -1,0 +1,28 @@
+@import "styles/vars"
+
+section.c-taskbar
+	background: rgba($colorPanel, .7)
+	display: flex
+	align-content: stretch
+	justify-content: flex-start
+
+	div.project-info
+		// box-shadow: inset 0 0 24px 1px rgba(black, .38)
+		padding: 10px
+		background: rgba($colorLight, .06)
+		margin: 10px
+		border: 1px solid rgba($colorLight, .12)
+		width: 240px
+		> *
+			margin-bottom: 10px
+			&:last-child
+				margin-bottom: 0
+
+		div.project-name
+			font-weight: 700
+
+		div.hover-info
+			color: rgba($colorLight, .7)
+			display: flex
+			align-items: center
+			justify-content: space-between

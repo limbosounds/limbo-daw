@@ -22,9 +22,14 @@ interface WindowProperties {
 	title: React.ReactNode
 	resizable: boolean
 	availableStates?: WindowState[]
+	getTriggerRef?: () => HTMLElement
 }
 
 class WindowsManager {
+	private previouslyFocused?
+		: string
+		= ""
+
 	constructor() {
 		makeObservable(this)
 	}
@@ -39,6 +44,7 @@ class WindowsManager {
 	windows
 		: WindowData[]
 		= []
+
 
 	@observable
 	focusedWindow?
@@ -67,6 +73,7 @@ class WindowsManager {
 			},
 			state = "open",
 			title = "",
+			getTriggerRef,
 		} = props || {}
 
 		const position = props?.position || {
@@ -84,6 +91,7 @@ class WindowsManager {
 				position,
 				state,
 				title,
+				getTriggerRef,
 			}
 		})
 
@@ -95,9 +103,14 @@ class WindowsManager {
 
 	@action
 	focus = (
-		id: string
+		id?: string
 	) => {
-		this.focusedWindow = id
+		if (!id)
+			this.focusedWindow = this.previouslyFocused || this.windows.find(item => item.id != this.focusedWindow)?.id || ""
+		else if (id != this.focusedWindow) {
+			this.previouslyFocused = this.focusedWindow
+			this.focusedWindow = id
+		}
 	}
 
 	@action
@@ -111,6 +124,21 @@ class WindowsManager {
 
 		window.props.position.x = position.x
 		window.props.position.y = position.y
+	}
+
+	@action
+	setWindowState = (
+		id: string,
+		state: WindowState,
+	) => {
+		const window = this.getWindowById(id)
+		if (!window)
+			return
+
+		window.props.state = state
+		if (state == "closed" || state == "minimized")
+			if (this.focusedWindow == id)
+				this.focus()
 	}
 }
 

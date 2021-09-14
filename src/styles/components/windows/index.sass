@@ -3,14 +3,22 @@
 div.c-window
 	position: absolute
 	z-index: 1000
-	background: red
-	box-shadow: 0 6px 18px rgba(black, .24)
-	+transition(filter)
+	background: $colorDark
+	+transition(filter, box-shadow, transform, opacity, background)
 
 	&.focused
 		z-index: 1200
+		box-shadow: 0 6px 18px rgba(black, .24)
+		background: $colorMain
 	&:not(.focused)
 		filter: contrast(50%)
+	&.minimized
+		transform: scale(0) translateZ(0)
+		opacity: 0
+		pointer-events: none
+		> div.window-content
+			> *
+				display: none
 
 	> header
 		display: flex

@@ -1,0 +1,39 @@
+@import "styles/vars"
+
+div.c-taskbar-buttons
+	display: flex
+	align-items: stretch
+	justify-content: flex-start
+	margin-left: 20px
+
+div.c-taskbar-button
+	+transition
+	width: 50px
+	background: rgba(white, .03)
+	display: flex
+	align-items: center
+	justify-content: center
+	color: white
+	position: relative
+	&:after
+		content: ""
+		height: 4px
+		background: white
+		transform-origin: 50% 100%
+		transform: scaleY(0) translateZ(0)
+		+pos(absolute, auto, 0, 0, 0)
+		+transition
+
+	&.visible
+		color: $colorLight
+		background: rgba($colorLight, .12)
+		&:after
+			background: $colorLight
+			transform: scaleY(0.25) translateZ(0)
+
+	&.active
+		color: $colorAccent
+		background: rgba($colorAccent, .24)
+		&:after
+			background: $colorAccent
+			transform: scaleY(1) translateZ(0)

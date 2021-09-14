@@ -101,24 +101,33 @@ extends React.Component<WindowProps, WindowState> {
 			size,
 			position,
 			title,
+			state,
+			getTriggerRef,
 		} = props
 
 		const isFocused = WindowsManager.focusedWindow == id
+
+		const trigger = getTriggerRef?.()
+
+		const { x: ox, y: oy }: Coords2D = {
+			x: trigger?.getBoundingClientRect().left || 0,
+			y: trigger?.getBoundingClientRect().top || 0,
+		}
+
+		const { x: px, y: py } = position
 		
 		return <>
 			<div
-				className={`c-window ${isFocused ? "focused" : ""}`}
+				className={`c-window ${isFocused ? "focused" : ""} ${state}`}
 				style={{
 					width: size.width + this.borderSize * 2,
 					height: size.height + this.borderSize + this.headerSize,
-					left: position.x,
-					top: position.y,
-					padding: `${this.headerSize}px ${this.borderSize}px ${this.borderSize}px ${this.borderSize}px`
+					left: px,
+					top: py,
+					padding: `${this.headerSize}px ${this.borderSize}px ${this.borderSize}px ${this.borderSize}px`,
+					transformOrigin: `${ox - px}px ${oy - py}px`,
 				}}
-				onMouseDown={() => {
-					console.log(id)
-					WindowsManager.focus(id)
-				}}
+				onMouseDown={() => WindowsManager.focus(id)}
 			>
 				<header
 					style={{
